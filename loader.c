@@ -94,21 +94,19 @@ int main(int argc, char** argv) {
 	        fprintf(stderr, "could not inject \"%s\"\n", lib);
 	        fprintf(stderr, "  %s\n", injector_error());
 	    }
-	    sleep(2);
+	    sleep(1);
 	    if (injector_uninject(injector, handle) != 0) {
         	printf("UNINJECT ERROR: %s\n", injector_error());
     	}
 	    injector_detach(injector);
     } else {
-    	printf("Opening pipe\n");
     	int file_h = open("/tmp/xbomb_dumped", O_RDONLY | O_ASYNC);
-		printf("Received game map:\n");
+		printf("\n\nReceived game map:\n");
 	    char buf[1024] = {0};
 	    while (read(file_h, buf, 1024) > 0) {
 		    printf("%s", buf);
 		    memset(buf, 0, sizeof(buf));
 		}
-		printf("End of data\n");
 	    close(file_h);
 	    remove("/tmp/xbomb_dumped");
 	}

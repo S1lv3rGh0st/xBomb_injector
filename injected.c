@@ -36,7 +36,7 @@ void init()
 	void* exe_base = ((void*)&menuButtonWidgetClass)-menu_offset;
 	char path_f[] = "/tmp/xbomb_dumped";
 	int file_h = open(path_f, O_CREAT | O_WRONLY);
-	write(file_h, "CURRENT GAME	TABLE\n", strlen("HELLO WORLD\n"));
+	// write(file_h, "CURRENT GAME	TABLE\n", strlen("HELLO WORLD\n"));
 
 	int height = *(int*)(exe_base+height_off);
 	int width = *(int*)(exe_base+width_off);
